@@ -3,14 +3,14 @@ using Xunit;
 
 namespace Code
 {
-    public class RenameStrategyIMGJPGSpec
+    public class RenameStrategyIMGPNGSpec
     {
-        IRenameStrategy strategy = new RenameStrategyIMGJPG();
+        IRenameStrategy strategy = new RenameStrategyIMGPNG();
 
         [Fact]
         public void shouldRename()
         {
-            const string fileName = "iMg_20000102_name.jPg";
+            const string fileName = "iMg_20000102_name.pNg";
             strategy
                 .CanRename(fileName)
                 .Should()
@@ -18,7 +18,7 @@ namespace Code
             strategy
                 .Rename(fileName)
                 .Should()
-                .Be("20000102_name.jPg");
+                .Be("20000102_name.pNg");
         }
     }
 }

@@ -11,13 +11,14 @@ namespace Code
             // Przedrostek WP_ chcę usunąć, podobnie jak i inne wyjtki
             // Because number of elements in my photo folder is too big, we need to create 
             // piece of software for that purpose.
-            // Operacja ma dotyczyć wszystkich moich zdjęć które już znajdują sięna dysku w folderze obarzów
+            // Operacja ma dotyczyć wszystkich moich zdjęć które już znajdują się na dysku w folderze obarzów
             var ioc = new ServiceCollection()
                             .AddLogging(loggingBuilder => loggingBuilder.AddConsole())
                             .AddSingleton<ImageNameNormalizer>()
                             .AddSingleton<IRenameStrategy, RenameStrategyWPJPG>()
                             .AddSingleton<IRenameStrategy, RenameStrategyWPMP4>()
                             .AddSingleton<IRenameStrategy, RenameStrategyIMGJPG>()
+                            .AddSingleton<IRenameStrategy, RenameStrategyIMGPNG>()
                             .AddSingleton<IRenameStrategy, RenameStrategyVIDMP4>()
                             .BuildServiceProvider();
 
