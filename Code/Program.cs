@@ -7,7 +7,7 @@ namespace Code
     {
         static void Main(string[] args)
         {
-            // Niektóre zdjecia mają przedrostek "WP_YYYYDDMM_*.jpg" gdzie YYYYMMDD reprezenruje jakąś datę.
+            // Niektóre zdjecia mają przedrostek "WP_YYYYDDMM_*.jpg" gdzie YYYYMMDD reprezentuje jakąś datę.
             // Przedrostek WP_ chcę usunąć, podobnie jak i inne wyjtki
             // Because number of elements in my photo folder is too big, we need to create 
             // piece of software for that purpose.
@@ -23,7 +23,9 @@ namespace Code
                             .BuildServiceProvider();
 
             var entry = ioc.GetService<ImageNameNormalizer>();
+            //entry.Run(@"S:\siudeks\OneDrive\Praca\Siudek & Junger\SLO11-LOK1\Sklep Wega Zdjęcia");
             entry.Run(@"S:\siudeks\OneDrive\Obrazy\Z aparatu");
+            
         }
     }
 }
