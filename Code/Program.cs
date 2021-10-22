@@ -23,9 +23,10 @@ namespace Code
                             .BuildServiceProvider();
 
             var entry = ioc.GetService<ImageNameNormalizer>();
-            //entry.Run(@"S:\siudeks\OneDrive\Praca\Siudek & Junger\SLO11-LOK1\Sklep Wega Zdjęcia");
-            entry.Run(@"S:\siudeks\OneDrive\Obrazy\Z aparatu");
+            // entry.Run(@"C:\Users\siude\OneDrive\Obrazy\Osobiste\2017\07 Wenecja");
+            // entry.Run(@"S:\siudeks\OneDrive\Obrazy\Z aparatu");
             
         }
     }
 }
+ 
