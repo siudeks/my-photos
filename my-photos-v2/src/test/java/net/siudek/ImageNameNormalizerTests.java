@@ -1,7 +1,9 @@
 package net.siudek;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.function.Function;
 
 import javax.inject.Inject;
 
@@ -10,6 +12,7 @@ import com.google.common.io.Files;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -46,99 +49,68 @@ public class ImageNameNormalizerTests extends TestsBase {
       .isEqualTo(expected);
   }
 
-  @Test
-  @SneakyThrows
-  public void should_normalize_img_png(@TempDir File root) {
-    var fileName = "iMg_20000102_name.pNg";
-    var newFile = new File(root, fileName);
-    newFile.createNewFile();
+  abstract class SingleFileTest {
+    private final String given;
+    private final String normalized;
 
-    normalizer.run(root.getAbsolutePath());
+    protected SingleFileTest(String actual, String normalized) {
+      this.given = actual;
+      this.normalized = normalized;
+    }
 
-    var expected = List.of(
-        Item.builder()
-          .name("20000102_name.pNg")
-          .build());
-
-    Assertions
-      .assertThat(asTree(root))
-      .isEqualTo(expected);
-  }
-
-  @Test
-  @SneakyThrows
-  public void should_normalize_vid_mp4(@TempDir File root) {
-    var fileName = "vId_20000102_name.mP4";
-    var newFile = new File(root, fileName);
-    newFile.createNewFile();
-
-    normalizer.run(root.getAbsolutePath());
-
-    var expected = List.of(
-        Item.builder()
-          .name("20000102_name.mP4")
-          .build());
-
-    Assertions
-      .assertThat(asTree(root))
-      .isEqualTo(expected);
-  }
-
-  @Test
-  @SneakyThrows
-  public void should_normalize_wp_jpg(@TempDir File root) {
-    var fileName = "WP_20000102_name.jPg";
-    var newFile = new File(root, fileName);
-    newFile.createNewFile();
-
-    normalizer.run(root.getAbsolutePath());
-
-    var expected = List.of(
-        Item.builder()
-          .name("20000102_name.jPg")
-          .build());
-
-    Assertions
-      .assertThat(asTree(root))
-      .isEqualTo(expected);
-  }
-
-  @Test
-  @SneakyThrows
-  public void should_normalize_wp_mp4(@TempDir File root) {
-    var fileName = "WP_20000102_name.mP4";
-    var newFile = new File(root, fileName);
-    newFile.createNewFile();
-
-    normalizer.run(root.getAbsolutePath());
-
-    var expected = List.of(
-        Item.builder()
-          .name("20000102_name.mP4")
-          .build());
-
-    Assertions
-      .assertThat(asTree(root))
-      .isEqualTo(expected);
-  }
-
-  @Test
-  @SneakyThrows
-  public void should_not_rename_unsupported_file(@TempDir File root) {
-    var fileName = "not supported naming style.jpg";
-    var newFile = new File(root, fileName);
-    newFile.createNewFile();
-
-    normalizer.run(root.getAbsolutePath());
-
-    var expected = List.of(
-        Item.builder()
-          .name(fileName)
-          .build());
-
-    Assertions
-      .assertThat(asTree(root))
-      .isEqualTo(expected);
-  }
+    @SneakyThrows
+    @Test
+    public void process(@TempDir File root) {
+      var newFile = new File(root, given);
+      newFile.createNewFile();
   
+      normalizer.run(root.getAbsolutePath());
+  
+      var expected = List.of(
+          Item.builder()
+            .name(normalized)
+            .build());
+  
+      Assertions
+        .assertThat(asTree(root))
+        .isEqualTo(expected);
+    }
+
+  }
+
+  @Nested
+  class ShouldNormalizeImgPng extends SingleFileTest {
+    ShouldNormalizeImgPng() {
+      super("iMg_20000102_name.pNg", "20000102_name.pNg");
+    }
+  }
+
+  @Nested
+  class ShouldNormalizeVidMp4 extends SingleFileTest {
+    ShouldNormalizeVidMp4() {
+      super("vId_20000102_name.mP4", "20000102_name.mP4");
+    }
+  }
+
+  @Nested
+  class ShouldNormalizeWpJpg extends SingleFileTest {
+    ShouldNormalizeWpJpg() {
+      super("WP_20000102_name.jPg", "20000102_name.jPg");
+    }
+  }
+
+  @Nested
+  class ShouldNormalizeWpMp4 extends SingleFileTest {
+    ShouldNormalizeWpMp4() {
+      super("WP_20000102_name.mP4", "20000102_name.mP4");
+    }
+  }
+
+  @Nested
+  class ShouldNotNormalizeUnsupportedFile extends SingleFileTest {
+    ShouldNotNormalizeUnsupportedFile() {
+      super("not supported naming style.jpg", "not supported naming style.jpg");
+    }
+  }
+
 }
