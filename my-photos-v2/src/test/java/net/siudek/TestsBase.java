@@ -1,5 +1,6 @@
 package net.siudek;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -51,6 +52,11 @@ public class TestsBase {
     var newItem = new ItemInt();
     newItem.setPath(current);
     items.add(newItem);
+  }
+
+  @SneakyThrows
+  protected List<Item> asTree(File root) {
+    return asTree(root.toPath());
   }
 
   @SneakyThrows

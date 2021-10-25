@@ -1,6 +1,9 @@
 package net.siudek;
 
-final class RenameStrategyImgJpg extends RenameStrategyBaseOnRegex {
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
+class RenameStrategyImgJpg extends RenameStrategyBaseOnRegex {
 
   private static final String FILENAME_REGEX = "img_\\d{8}_.*\\.jpg";
 

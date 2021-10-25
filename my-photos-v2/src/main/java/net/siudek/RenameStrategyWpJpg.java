@@ -1,6 +1,9 @@
 package net.siudek;
 
-final class RenameStrategyWpJpg  extends RenameStrategyBaseOnRegex {
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
+class RenameStrategyWpJpg  extends RenameStrategyBaseOnRegex {
 
     private final static String FILENAME_REGEX = "wp_\\d{8}_.*\\.jpg";
 

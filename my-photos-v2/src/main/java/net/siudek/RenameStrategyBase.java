@@ -1,22 +1,18 @@
 package net.siudek;
 
-import java.io.File;
 import java.nio.file.Path;
 
-public abstract class RenameStrategyBase implements IRenameStrategy {
+public abstract class RenameStrategyBase implements RenameStrategy {
 
-    @Override
-    public abstract boolean CanRename(Path file);
+  @Override
+  public abstract boolean canRename(Path file);
 
-    @Override
-    public String Rename(Path file) {
-        var asFile = file.toFile();
-        var fileName = asFile.getName();
-        var newFileName = generateNewFileName(fileName);
-        var parentFile = asFile.getParentFile();
-        var newFile = new File(parentFile, newFileName);
-        return newFile.getAbsolutePath();
-    }
+  @Override
+  public String rename(Path file) {
+    var asFile = file.toFile();
+    var fileName = asFile.getName();
+    return generateNewFileName(fileName);
+  }
 
-    protected abstract String generateNewFileName(String current);
+  protected abstract String generateNewFileName(String current);
 }
