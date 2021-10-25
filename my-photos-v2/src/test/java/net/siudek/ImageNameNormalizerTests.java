@@ -79,6 +79,13 @@ public class ImageNameNormalizerTests extends TestsBase {
   }
 
   @Nested
+  class ShouldNormalizeImgJpg extends SingleFileTest {
+    ShouldNormalizeImgJpg() {
+      super("IMG_20211010_154108.jpg", "20211010_154108.jpg");
+    }
+  }
+
+  @Nested
   class ShouldNormalizeImgPng extends SingleFileTest {
     ShouldNormalizeImgPng() {
       super("iMg_20000102_name.pNg", "20000102_name.pNg");
