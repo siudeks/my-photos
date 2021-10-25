@@ -54,7 +54,7 @@ public class TestsBase {
   }
 
   @SneakyThrows
-  protected Items asTree(Path root) {
+  protected List<Item> asTree(Path root) {
     var items = new ItemsInt();
     Files.walk(root)
         // in our result we do not include root element, but it is included in
@@ -67,13 +67,13 @@ public class TestsBase {
     return map(items);
   }
 
-  private static Items map(ItemsInt items) {
-    var result = Items.builder();
+  private static List<Item> map(ItemsInt items) {
+    var result = new ArrayList<Item>();
     for (var item : items.children) {
       var mappedItem = map(item);
-      result.child(mappedItem);
+      result.add(mappedItem);
     }
-    return result.build();
+    return result;
   }
 
   private static Item map(ItemInt item) {
@@ -106,15 +106,8 @@ public class TestsBase {
 
 @Value
 @Builder
-class Items {
-  @Singular
-  private List<Item> children;
-}
-
-@Value
-@Builder
 class Item {
   private String name;
-  @Default
-  private Items children = Items.builder().build();
+  @Singular
+  private List<Item> children;
 }

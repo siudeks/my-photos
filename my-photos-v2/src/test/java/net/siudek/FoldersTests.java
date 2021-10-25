@@ -3,6 +3,7 @@ package net.siudek;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.util.List;
 
 import com.google.common.io.Files;
 
@@ -19,7 +20,7 @@ public final class FoldersTests extends TestsBase {
 
   @Test
   public void should_process_empty_folder(@TempDir Path root) {
-    Assertions.assertThat(asTree(root)).isEqualTo(Items.builder().build());
+    Assertions.assertThat(asTree(root)).isEqualTo(List.of());
   }
 
   @Test
@@ -28,9 +29,8 @@ public final class FoldersTests extends TestsBase {
     var newFile = new File(root.toFile(), "file.txt");
     newFile.createNewFile();
 
-    var expected = Items.builder()
-        .child(Item.builder().name("file.txt").build())
-        .build();
+    var expected = List.of(
+        Item.builder().name("file.txt").build());
     Assertions
       .assertThat(asTree(root))
       .isEqualTo(expected);
@@ -43,19 +43,14 @@ public final class FoldersTests extends TestsBase {
     Files.createParentDirs(newFile);
     newFile.createNewFile();
 
-    var expected = Items.builder()
-        .child(Item.builder()
+    var expected = List.of(
+        Item.builder()
           .name("1")
-          .children(Items.builder()
-            .child(Item.builder()
+          .child(Item.builder()
               .name("2")
-              .children(Items.builder()
-                .child(Item.builder().name("file.txt").build())
-                .build())
+              .child(Item.builder().name("file.txt").build())
               .build())
-            .build())
-          .build())
-        .build();
+        .build());
     Assertions
       .assertThat(asTree(root))
       .isEqualTo(expected);
