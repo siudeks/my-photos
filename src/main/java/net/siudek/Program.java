@@ -18,6 +18,7 @@ public class Program implements QuarkusApplication {
     // Because number of elements in my photo folder is too large, I need to automate renaming such files.
 
     normalizer.run("S:/siudeks/OneDrive/Obrazy/Z aparatu");
+    //normalizer.run("S:\\siudeks\\OneDrive\\Dokumenty\\Albumy\\rodzinne-albumy-git\\Monika Filocha");
     return 0;
   }
 }
