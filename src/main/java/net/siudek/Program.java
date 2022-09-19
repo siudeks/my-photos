@@ -17,7 +17,8 @@ public class Program implements QuarkusApplication {
     // Przedrostek WP_ chcę usunąć, podobnie jak i inne wyjątki
     // Because number of elements in my photo folder is too large, I need to automate renaming such files.
 
-    normalizer.run("S:/siudeks/OneDrive/Obrazy/Z aparatu");
+    normalizer.run("/mnt/c/Users/slawo/OneDrive/Z aparatu");
+    // normalizer.run("S:/siudeks/OneDrive/Obrazy/Z aparatu");
     //normalizer.run("S:\\siudeks\\OneDrive\\Dokumenty\\Albumy\\rodzinne-albumy-git\\Monika Filocha");
     return 0;
   }
