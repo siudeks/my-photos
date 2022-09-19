@@ -1,13 +1,9 @@
 package net.siudek;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.util.List;
-import java.util.function.Function;
 
 import javax.inject.Inject;
-
-import com.google.common.io.Files;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -15,6 +11,8 @@ import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+
+import com.google.common.io.Files;
 
 import io.quarkus.test.junit.QuarkusTest;
 import lombok.SneakyThrows;
@@ -131,6 +129,20 @@ public class ImageNameNormalizerTests extends TestsBase {
   class ShouldNormalizeVid2Mp4 extends SingleFileTest {
     ShouldNormalizeVid2Mp4() {
       super("VID20220907123413.mp4", "20220907-123413.mp4");
+    }
+  }
+
+  @Nested
+  class ShouldNormalizePxl2Jpg extends SingleFileTest {
+    ShouldNormalizePxl2Jpg() {
+      super("PXL_20210820_120217056.jpg", "20210820-120217.jpg");
+    }
+  }
+
+  @Nested
+  class ShouldNormalizePxlMp4 extends SingleFileTest {
+    ShouldNormalizePxlMp4() {
+      super("PXL_20210820_120217056.mp4", "20210820-120217.mp4");
     }
   }
 
