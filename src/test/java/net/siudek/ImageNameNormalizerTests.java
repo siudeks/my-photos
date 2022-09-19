@@ -120,4 +120,18 @@ public class ImageNameNormalizerTests extends TestsBase {
     }
   }
 
+  @Nested
+  class ShouldNormalizeImg2Jpg extends SingleFileTest {
+    ShouldNormalizeImg2Jpg() {
+      super("IMG20220907121718.jpg", "20220907-121718.jpg");
+    }
+  }
+
+  @Nested
+  class ShouldNormalizeVid2Mp4 extends SingleFileTest {
+    ShouldNormalizeVid2Mp4() {
+      super("VID20220907123413.mp4", "20220907-123413.mp4");
+    }
+  }
+
 }
