@@ -1,8 +1,8 @@
 package net.siudek;
 
-import javax.enterprise.context.ApplicationScoped;
+import org.springframework.stereotype.Component;
 
-@ApplicationScoped
+@Component
 class RenameStrategyPxlMp4  extends RenameStrategyBaseOnRegex {
 
     private static final String FILENAME_REGEX = "PXL_\\d{8}_\\d{9}\\.mp4";

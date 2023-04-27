@@ -1,8 +1,8 @@
 package net.siudek;
 
-import javax.enterprise.context.ApplicationScoped;
+import org.springframework.stereotype.Component;
 
-@ApplicationScoped
+@Component
 class RenameStrategyWpMp4 extends RenameStrategyBaseOnRegex {
 
   private static final String FILENAME_REGEX = "wp_\\d{8}_.*\\.mp4";

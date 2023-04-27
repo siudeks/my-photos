@@ -3,25 +3,24 @@ package net.siudek;
 import java.io.File;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.google.common.io.Files;
 
-import io.quarkus.test.junit.QuarkusTest;
 import lombok.SneakyThrows;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-@QuarkusTest
+@SpringBootTest
 public class ImageNameNormalizerTests extends TestsBase {
 
-  @Inject
+  @Autowired
   ImageNameNormalizer normalizer;
 
   @Test

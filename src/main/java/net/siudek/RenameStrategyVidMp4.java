@@ -1,8 +1,8 @@
 package net.siudek;
 
-import javax.enterprise.context.ApplicationScoped;
+import org.springframework.stereotype.Component;
 
-@ApplicationScoped
+@Component
 class RenameStrategyVidMp4  extends RenameStrategyBaseOnRegex {
 
     private final static String FILENAME_REGEX = "vid_\\d{8}_.*\\.mp4";

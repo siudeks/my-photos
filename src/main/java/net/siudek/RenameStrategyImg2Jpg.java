@@ -1,8 +1,8 @@
 package net.siudek;
 
-import javax.enterprise.context.ApplicationScoped;
+import org.springframework.stereotype.Component;
 
-@ApplicationScoped
+@Component
 class RenameStrategyImg2Jpg extends RenameStrategyBaseOnRegex {
 
   private static final String FILENAME_REGEX = "IMG\\d{14}\\.jpg";

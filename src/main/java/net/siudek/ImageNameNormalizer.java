@@ -2,9 +2,9 @@ package net.siudek;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Instance;
+import org.springframework.stereotype.Component;
 
 import io.vavr.Tuple;
 import io.vavr.collection.Array;
@@ -13,11 +13,11 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@ApplicationScoped
+@Component
 class ImageNameNormalizer {
   private final Array<RenameStrategy> renameStrategies;
 
-  public ImageNameNormalizer(Instance<RenameStrategy> strategies) {
+  public ImageNameNormalizer(List<RenameStrategy> strategies) {
     this.renameStrategies = Array.ofAll(strategies);
   }
 
