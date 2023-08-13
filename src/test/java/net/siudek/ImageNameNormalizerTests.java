@@ -145,4 +145,10 @@ public class ImageNameNormalizerTests extends TestsBase {
     }
   }
 
+  @Nested
+  class ShouldNormalizeScreenshotJpg extends SingleFileTest {
+    ShouldNormalizeScreenshotJpg() {
+      super("Screenshot_20230804_075522_Zepp Life.jpg", "20230804_075522_Zepp Life.jpg");
+    }
+  }
 }

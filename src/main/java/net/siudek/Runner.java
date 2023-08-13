@@ -18,7 +18,6 @@ public class Runner implements ApplicationRunner {
     // Przedrostek WP_ chcę usunąć, podobnie jak i inne wyjątki
     // Because number of elements in my photo folder is too large, I need to automate renaming such files.
 
-    normalizer.run("/mnt/c/Users/slawo/OneDrive/Z aparatu");
-    normalizer.run("/mnt/c/Users/slawo/OneDrive/Obrazy/Z aparatu");
+    normalizer.run("/z-aparatu");
   }
 }
