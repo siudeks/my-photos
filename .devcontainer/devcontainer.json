@@ -14,7 +14,8 @@
 	},
 
 	"mounts": [
-		"source=/mnt/x/OneDrive/Obrazy/Z aparatu,target=/z-aparatu,type=bind"
+		"source=/mnt/x/OneDrive/Obrazy/Z aparatu,target=/z-aparatu,type=bind",
+		// "source=/home/{localEnv:USER}/.ssh,target=/home/vscode/.ssh,type=bind"	
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
