@@ -16,7 +16,7 @@
 	"mounts": [
 		"source=/mnt/x/OneDrive/Obrazy/Z aparatu,target=/z-aparatu,type=bind",
 		// "source=/home/{localEnv:USER}/.ssh,target=/home/vscode/.ssh,type=bind"	
-	]
+	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -25,7 +25,14 @@
 	// "postCreateCommand": "java -version",
 
 	// Configure tool-specific properties.
-	// "customizations": {},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"editorconfig.editorconfig",
+				"vscjava.vscode-java-pack"
+			]
+		}
+	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
