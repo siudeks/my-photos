@@ -14,7 +14,7 @@
 	},
 
 	"mounts": [
-		"source=/mnt/x/OneDrive/Obrazy/Z aparatu,target=/z-aparatu,type=bind",
+		"source=/mnt/x/OneDrive/Z aparatu,target=/z-aparatu,type=bind"
 		// "source=/home/{localEnv:USER}/.ssh,target=/home/vscode/.ssh,type=bind"	
 	],
 

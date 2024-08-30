@@ -151,4 +151,12 @@ public class ImageNameNormalizerTests extends TestsBase {
       super("Screenshot_20230804_075522_Zepp Life.jpg", "20230804_075522_Zepp Life.jpg");
     }
   }
+
+  @Nested
+  class ShouldNormalizePxlMp extends SingleFileTest {
+    ShouldNormalizePxlMp() {
+      super("PXL_20210730_173814085.PORTRAIT.jpg", "20210730-173814.jpg");
+    }
+  }
+
 }
